@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\libraries\Hexalith.NetAspire\Hexalith.NetAspire.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Hexalith.NetAspire.Defaults\Hexalith.NetAspire.Defaults.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Hexalith.NetAspire.Hosting\Hexalith.NetAspire.Hosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
