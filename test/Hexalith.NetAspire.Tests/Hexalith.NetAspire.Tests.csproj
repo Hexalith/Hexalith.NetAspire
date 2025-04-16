@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\libraries\Hexalith.MyNewPackage\Hexalith.MyNewPackage.csproj" />
+    <ProjectReference Include="..\..\src\libraries\Hexalith.NetAspire\Hexalith.NetAspire.csproj" />
   </ItemGroup>
 
   <ItemGroup>

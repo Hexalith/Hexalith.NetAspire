@@ -1,11 +1,11 @@
 {
-  "name": "hexalith-mynewpackage",
+  "name": "hexalith-NetAspire",
   "version": "0.0.0-development",
   "private": true,
-  "description": "Hexalith MyNewPackage libraries",
+  "description": "Hexalith NetAspire libraries",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Hexalith/Hexalith.MyNewPackage.git"
+    "url": "https://github.com/Hexalith/Hexalith.NetAspire.git"
   },
   "release": {
     "branches": [ "main" ]
