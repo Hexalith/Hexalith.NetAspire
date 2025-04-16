@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build-release.yml = .github\workflows\build-release.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NetAspire", "src\libraries\Hexalith.NetAspire\Hexalith.NetAspire.csproj", "{466549CC-5EDB-4881-F87F-C720AFD4D468}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{F9B9A5B1-8090-40C2-B46F-F4083B72C8BC}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
@@ -48,8 +46,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{3E
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NetAspire.Example", "src\examples\Hexalith.NetAspire.Example\Hexalith.NetAspire.Example.csproj", "{52A95C3D-7705-406D-B0F6-C49017FC525F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NetAspire.Abstractions", "src\libraries\Hexalith.NetAspire.Abstractions\Hexalith.NetAspire.Abstractions.csproj", "{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{884D0EEB-6F10-4783-A58F-178A17DF1131}"
 	ProjectSection(SolutionItems) = preProject
@@ -183,16 +179,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9D38EDD7-5A8
 		HexalithApp\src\Directory.Build.props = HexalithApp\src\Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NetAspire.Defaults", "src\libraries\Hexalith.NetAspire.Defaults\Hexalith.NetAspire.Defaults.csproj", "{A8CE6DF2-068C-C264-7956-1C5E0632AFB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hexalith.NetAspire.Hosting", "src\libraries\Hexalith.NetAspire.Hosting\Hexalith.NetAspire.Hosting.csproj", "{B56510A1-EBCC-2AE0-6F5F-FFD88A100629}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{466549CC-5EDB-4881-F87F-C720AFD4D468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{466549CC-5EDB-4881-F87F-C720AFD4D468}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{466549CC-5EDB-4881-F87F-C720AFD4D468}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{466549CC-5EDB-4881-F87F-C720AFD4D468}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A0520529-37CD-4558-8D3C-119DB006D10D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0520529-37CD-4558-8D3C-119DB006D10D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0520529-37CD-4558-8D3C-119DB006D10D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -201,10 +197,6 @@ Global
 		{52A95C3D-7705-406D-B0F6-C49017FC525F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52A95C3D-7705-406D-B0F6-C49017FC525F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52A95C3D-7705-406D-B0F6-C49017FC525F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75479A66-C8B1-45D7-8B4E-851BB4C161EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{75479A66-C8B1-45D7-8B4E-851BB4C161EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75479A66-C8B1-45D7-8B4E-851BB4C161EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -221,17 +213,23 @@ Global
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8CE6DF2-068C-C264-7956-1C5E0632AFB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8CE6DF2-068C-C264-7956-1C5E0632AFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8CE6DF2-068C-C264-7956-1C5E0632AFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8CE6DF2-068C-C264-7956-1C5E0632AFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56510A1-EBCC-2AE0-6F5F-FFD88A100629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56510A1-EBCC-2AE0-6F5F-FFD88A100629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56510A1-EBCC-2AE0-6F5F-FFD88A100629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56510A1-EBCC-2AE0-6F5F-FFD88A100629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3929FBF6-EDA1-4CA7-8541-C460D0DCE449} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{466549CC-5EDB-4881-F87F-C720AFD4D468} = {884D0EEB-6F10-4783-A58F-178A17DF1131}
 		{A0520529-37CD-4558-8D3C-119DB006D10D} = {EDB74E69-759C-4EC4-911B-DF6D777A6CFA}
 		{3E198984-7A1D-4A63-BB49-FCF1B9AA5EF2} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{52A95C3D-7705-406D-B0F6-C49017FC525F} = {3E198984-7A1D-4A63-BB49-FCF1B9AA5EF2}
-		{CCA8A23F-D69E-76DE-5B35-3B61C3C9CE73} = {884D0EEB-6F10-4783-A58F-178A17DF1131}
 		{884D0EEB-6F10-4783-A58F-178A17DF1131} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{339097B8-FCFF-4AD2-8535-C6FA645ED419} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{DA4446BE-296C-40E4-B0FF-05F9AF0F2502} = {C67B5007-8999-4638-8317-C6DA2F62D65C}
@@ -253,6 +251,8 @@ Global
 		{7E806F0B-2EA0-EC52-9F07-5A874BB548DB} = {9D38EDD7-5A82-4B4E-A976-8386E412F7F6}
 		{73984AC1-4B34-15A1-2D11-A5831AE1B267} = {9D38EDD7-5A82-4B4E-A976-8386E412F7F6}
 		{9D38EDD7-5A82-4B4E-A976-8386E412F7F6} = {568500EF-C4B9-4F72-B9F3-01EB044A4659}
+		{A8CE6DF2-068C-C264-7956-1C5E0632AFB3} = {884D0EEB-6F10-4783-A58F-178A17DF1131}
+		{B56510A1-EBCC-2AE0-6F5F-FFD88A100629} = {884D0EEB-6F10-4783-A58F-178A17DF1131}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B7376F4-B33A-4BC6-AFCA-C09B437568D7}
