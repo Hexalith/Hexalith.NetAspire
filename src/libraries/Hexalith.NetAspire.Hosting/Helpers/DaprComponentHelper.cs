@@ -228,7 +228,7 @@ public static class DaprComponentHelper
 
     private static IResourceBuilder<IDaprComponentResource> GetOrAddComponent(string name, Func<IResourceBuilder<IDaprComponentResource>> create)
     {
-        string normalizedName = AppHelper.NormalizeBicepResourceName(name);
+        string normalizedName = name.NormalizeBicepResourceName();
         if (_components.TryGetValue(normalizedName, out IResourceBuilder<IDaprComponentResource>? component))
         {
             return component;
