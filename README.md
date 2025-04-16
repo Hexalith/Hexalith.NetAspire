@@ -1,13 +1,11 @@
 # Hexalith.NetAspire
 
-This is a template repository for creating new Hexalith packages. The repository provides a structured starting point for developing new packages within the Hexalith ecosystem.
-
 ## Build Status
 
 [![License: MIT](https://img.shields.io/github/license/hexalith/hexalith.NetAspire)](https://github.com/hexalith/hexalith/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1063152441819942922?label=Discord&logo=discord&logoColor=white&color=d82679)](https://discordapp.com/channels/1102166958918610994/1102166958918610997)
 
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/31529/badge.svg)](https://scan.coverity.com/projects/hexalith-hexalith-NetAspire)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/27051/badge.svg)](https://scan.coverity.com/projects/hexalith-NetAspire)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d48f6d9ab9fb4776b6b4711fc556d1c4)](https://app.codacy.com/gh/Hexalith/Hexalith.NetAspire/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.NetAspire&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.NetAspire)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.NetAspire&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.NetAspire)
@@ -26,19 +24,27 @@ This is a template repository for creating new Hexalith packages. The repository
 
 ## Overview
 
-This repository provides a template for creating new Hexalith packages. It includes all the necessary configuration files, directory structure, and GitHub workflow configurations to ensure consistency across Hexalith packages.
+This repository provides libraries and a host project for integrating Hexalith applications with .NET Aspire. It facilitates the orchestration of various Hexalith services and components within the Aspire ecosystem.
+
+Key components include:
+- **Hexalith.NetAspire Libraries**: Core libraries (`Hexalith.NetAspire`, `Hexalith.NetAspire.Abstractions`, `Hexalith.NetAspire.Defaults`) for integrating Hexalith services with Aspire.
+- **AspireHost**: The .NET Aspire application host project (`AspireHost/AspireHost.csproj`) responsible for orchestrating the application's services.
+- **HexalithApp Submodule**: Contains the core Hexalith application modules.
+- **Hexalith.Builds Submodule**: Provides shared build configurations and tooling.
+
 
 ## Repository Structure
 
 The repository is organized as follows:
 
 - [src](./src/README.md) Is the source code directory of your project.
-- [src/librairies](./src/librairies/README.md) Is the source code directory where you will add your Nuget package projects.
+- [src/libraries](./src/libraries/README.md) Is the source code directory where you will add your Nuget package projects.
 - [src/examples](./src/examples/README.md) Contains example implementations of your projects.
 - [src/servers](./src/servers/README.md) Is the source code directory where you will add your Docker container projects.
-- [src/aspire](./src/aspire/README.md) Is the source code directory where you will add your Aspire project.
+- [AspireHost](./AspireHost/README.md) Contains the .NET Aspire host project.
 - [test](./test/README.md) Contains test projects for your packages.
-- [Hexalith.Builds](./Hexalith.Builds/README.md) Contains shared build configurations and tools.
+- [Hexalith.Builds](./Hexalith.Builds/README.md) (Submodule) Contains shared build configurations and tools.
+- [HexalithApp](./HexalithApp/README.md) (Submodule) Contains the core Hexalith application modules.
 
 ## Getting Started
 
@@ -51,35 +57,45 @@ The repository is organized as follows:
 
 ### Initializing the Package
 
-To use this template to create a new Hexalith package:
-
-1. Clone this repository or use it as a template when creating a new repository on GitHub.
-2. Run the initialization script with your desired package name:
+To initialize the repository environment, including setting up necessary configurations or dependencies, run the initialization script:
 
 ```powershell
-./initialize.ps1 -PackageName "YourPackageName"
+./initialize.ps1
 ```
 
-This script will:
-
-- Replace all occurrences of "NetAspire" with your package name
-- Replace all occurrences of "NetAspire" with the lowercase version of your package name
-- Rename directories and files that contain "NetAspire" in their name
-- Initialize and update Git submodules
-- Set up the project structure for your new package
 
 ### Git Submodules
 
-This template uses the Hexalith.Builds repository as a Git submodule. For information about the build system and configuration, refer to the README files in the Hexalith.Builds directory.
+This repository utilizes Git submodules to include external dependencies:
+
+- **Hexalith.Builds**: Contains common build scripts, configurations, and tools used across Hexalith projects.
+- **HexalithApp**: Includes the core application logic and modules for the Hexalith platform.
+
+To initialize and fetch the content of these submodules, run the following Git command after cloning the repository:
+
+```bash
+git submodule update --init --recursive
+```
+
+The `initialize.ps1` script might also handle submodule initialization.
+
 
 ## Development
 
-After initializing your package, you can start developing by:
+To build the entire solution, navigate to the root directory and run:
 
-1. Opening the solution file in your preferred IDE
-2. Adding your implementation to the src/ directory
-3. Writing tests in the test/ directory
-4. Building and testing your package
+```bash
+dotnet build Hexalith.NetAspire.sln
+```
+
+To run the application using the .NET Aspire host:
+
+```bash
+dotnet run --project AspireHost/AspireHost.csproj
+```
+
+This will start the Aspire dashboard and orchestrate the services defined in the host project.
+
 
 ## License
 

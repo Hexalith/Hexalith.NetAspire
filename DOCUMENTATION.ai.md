@@ -1,10 +1,8 @@
 # Repository documentation prompt
 
-This is a template repository for creating new Hexalith packages.
+Create a complete documentation on how to use this repository template. 
 
-Create a complete documentation on how to use this repository template. Do not document files in submodule @/Hexalith.Builds/ , instead add reference to README.md file @/Hexalith.Builds/README.md
-
-Add a topic on how to initialize this repository by running the intialize.ps1 script.
+Do not document files in submodules @/Hexalith.Builds/ and @/HexalithApp/, instead add reference to README.md files in the submodules root.
 
 Add a build status topic with the following :
 
