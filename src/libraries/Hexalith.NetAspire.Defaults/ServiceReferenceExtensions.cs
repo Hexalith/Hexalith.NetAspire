@@ -37,9 +37,7 @@ public static class ServiceReferenceExtensions
             throw new ArgumentException("Address must be a valid absolute URI.", nameof(address));
         }
 
-        IHttpClientBuilder builder = services.AddGrpcClient<TClient>(o => o.Address = new(address));
-
-        return builder;
+        return services.AddGrpcClient<TClient>(o => o.Address = new(address));
     }
 
     /// <summary>

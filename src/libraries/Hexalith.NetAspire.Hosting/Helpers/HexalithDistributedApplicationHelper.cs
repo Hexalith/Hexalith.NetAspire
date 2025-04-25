@@ -87,10 +87,12 @@ public static class HexalithDistributedApplicationHelper
     /// </summary>
     /// <param name="configuration">The configuration.</param>
     /// <returns>The deployment prefix.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the setting is not defined.</exception>
     public static string GetDeploymentPrefix([NotNull] this IConfiguration configuration)
     {
         ArgumentNullException.ThrowIfNull(configuration);
-        return configuration.GetValue<string>("DeploymentPrefix") ?? throw new InvalidOperationException("Setting 'DeploymentPrefix' not defined.");
+        return configuration.GetValue<string>("DeploymentPrefix")
+            ?? throw new InvalidOperationException("Setting 'DeploymentPrefix' not defined.");
     }
 
     /// <summary>
@@ -98,6 +100,7 @@ public static class HexalithDistributedApplicationHelper
     /// </summary>
     /// <param name="builder">The builder.</param>
     /// <returns>The environment name.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the setting is not defined.</exception>
     public static string GetEnvironmentName([NotNull] this IDistributedApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
@@ -162,9 +165,17 @@ public static class HexalithDistributedApplicationHelper
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         string settingName = (project.ApplicationBuilder.GetEnvironmentName() + "__" + name).Replace("__", ":", StringComparison.OrdinalIgnoreCase);
         string? value = project.ApplicationBuilder.Configuration[settingName];
-        return string.IsNullOrWhiteSpace(value)
-            ? required ? throw new InvalidOperationException($"The setting {settingName} is required.") : project
-            : project.WithEnvironment(name, value);
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            if (required)
+            {
+                throw new InvalidOperationException($"The setting {settingName} is required.");
+            }
+
+            return project;
+        }
+
+        return project.WithEnvironment(name, value);
     }
 
     /// <summary>
@@ -175,13 +186,10 @@ public static class HexalithDistributedApplicationHelper
     /// <param name="companyId">The default company ID.</param>
     /// <param name="originId">The default origin ID.</param>
     /// <returns>The project resource builder reference.</returns>
-    public static IResourceBuilder<ProjectResource> WithOrganization(this IResourceBuilder<ProjectResource> project, string partitionId, string companyId, string originId)
-    {
-        return project
+    public static IResourceBuilder<ProjectResource> WithOrganization(this IResourceBuilder<ProjectResource> project, string partitionId, string companyId, string originId) => project
             .WithEnvironment("Organization__DefaultPartitionId", partitionId)
             .WithEnvironment("Organization__DefaultCompanyId", companyId)
             .WithEnvironment("Organization__DefaultOriginId", originId);
-    }
 
     /// <summary>
     /// Adds environment settings to the project resource.
@@ -199,8 +207,16 @@ public static class HexalithDistributedApplicationHelper
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
         string settingName = (project.ApplicationBuilder.GetEnvironmentName() + "__" + name).Replace("__", ":", StringComparison.OrdinalIgnoreCase);
         string? value = project.ApplicationBuilder.Configuration[settingName];
-        return string.IsNullOrWhiteSpace(value)
-            ? required ? throw new InvalidOperationException($"The setting {settingName} is required.") : project
-            : project.WithEnvironment("SEC_" + name, value);
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            if (required)
+            {
+                throw new InvalidOperationException($"The setting {settingName} is required.");
+            }
+
+            return project;
+        }
+
+        return project.WithEnvironment("SEC_" + name, value);
     }
 }

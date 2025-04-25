@@ -134,6 +134,7 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the queue binding.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the queue binding.</returns>
+    [SuppressMessage("Major Code Smell", "S4144:Methods should not have identical implementations", Justification = "To complete")]
     public static IResourceBuilder<IDaprComponentResource> AddQueueBinding(
         [NotNull] this IDistributedApplicationBuilder builder,
         [NotNull] string name,
@@ -155,6 +156,7 @@ public static class DaprComponentHelper
     /// <param name="name">The name of the secret store.</param>
     /// <param name="applicationName">The application name of the bus.</param>
     /// <returns>The resource builder for the secret store.</returns>
+    [SuppressMessage("Major Code Smell", "S4144:Methods should not have identical implementations", Justification = "To complete")]
     public static IResourceBuilder<IDaprComponentResource> AddSecretStore(
         [NotNull] this IDistributedApplicationBuilder builder,
         [NotNull] string name,
