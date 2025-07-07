@@ -12,6 +12,6 @@
 
   <PropertyGroup>
     <Product>Hexalith.NetAspire</Product>
-    <RepositoryUrl>https://github.com/Hexalith/Hexalith.NetAspire</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Hexalith/Hexalith.NetAspire.git</RepositoryUrl>
   </PropertyGroup>
 </Project>
