@@ -13,5 +13,8 @@
   <PropertyGroup>
     <Product>Hexalith.NetAspire</Product>
     <RepositoryUrl>https://github.com/Hexalith/Hexalith.NetAspire.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Hexalith/NetAspire</PackageProjectUrl>
+    <PackageTags>hexalith;application;aspire;</PackageTags>
+    <Description>Hexalith aspire application projects</Description>
   </PropertyGroup>
 </Project>
