@@ -101,6 +101,7 @@ public static class HexalithDistributedApplicationHelper
     /// <param name="builder">The builder.</param>
     /// <returns>The environment name.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the setting is not defined.</exception>
+    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Not applicable")]
     public static string GetEnvironmentName([NotNull] this IDistributedApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
@@ -139,6 +140,7 @@ public static class HexalithDistributedApplicationHelper
     /// </summary>
     /// <param name="name">The resource name.</param>
     /// <returns>The normalized resource name.</returns>
+    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Not applicable")]
     public static string NormalizeBicepResourceName(this string name)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);

@@ -5,6 +5,8 @@
 
 namespace Hexalith.NetAspire.Hosting.Helpers;
 
+using System.Diagnostics.CodeAnalysis;
+
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
 
@@ -35,6 +37,7 @@ public class HexalithDistributedApplication(string[] args)
     /// <typeparam name="TProject">The type of the t project.</typeparam>
     /// <param name="projectName">Name of the project.</param>
     /// <returns>Aspire.Hosting.ApplicationModel.IResourceBuilder&lt;Aspire.Hosting.ApplicationModel.ProjectResource&gt;.</returns>
+    [SuppressMessage("Globalization", "CA1308:Normalize strings to uppercase", Justification = "Not applicable")]
     public IResourceBuilder<ProjectResource> AddProject<TProject>(string projectName)
         where TProject : IProjectMetadata, new()
     {
