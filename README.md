@@ -19,7 +19,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Hexalith_Hexalith.NetAspire&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Hexalith_Hexalith.NetAspire)
 
 [![Build status](https://github.com/Hexalith/Hexalith.NetAspire/actions/workflows/build-release.yml/badge.svg)](https://github.com/Hexalith/Hexalith.NetAspire/actions)
-[![NuGet](https://img.shields.io/nuget/v/Hexalith.NetAspire.svg)](https://www.nuget.org/packages/Hexalith.NetAspire)
+[![NuGet](https://img.shields.io/nuget/v/Hexalith.NetAspire.Hosting.svg)](https://www.nuget.org/packages/Hexalith.NetAspire.Hosting)
 [![Latest](https://img.shields.io/github/v/release/Hexalith/Hexalith.NetAspire?include_prereleases&label=preview)](https://github.com/Hexalith/Hexalith.NetAspire/pkgs/nuget/Hexalith.NetAspire)
 
 ## Overview
