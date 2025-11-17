@@ -1,14 +1,15 @@
-﻿// <copyright file="Extensions.cs" company="ITANEO">
+﻿// <copyright file="AspireExtensions.cs" company="ITANEO">
 // Copyright (c) ITANEO (https://www.itaneo.com). All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-namespace Microsoft.Extensions.Hosting;
+namespace Hexalith.NetAspire.Defaults;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using OpenTelemetry;
@@ -23,7 +24,7 @@ using OpenTelemetry.Trace;
 /// defaults for distributed service scenarios. By referencing this class in each service project, you can ensure
 /// consistent configuration of health checks, telemetry, and service discovery across your solution. For more
 /// information on using these defaults, see https://aka.ms/dotnet/aspire/service-defaults.</remarks>
-public static class Extensions
+public static class AspireExtensions
 {
     private const string AlivenessEndpointPath = "/alive";
     private const string HealthEndpointPath = "/health";
@@ -84,7 +85,6 @@ public static class Extensions
     /// <typeparam name="TBuilder">The type of the host application builder.</typeparam>
     /// <param name="builder">The host application builder.</param>
     /// <returns>The updated host application builder.</returns>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1005:Single line comments should begin with single space", Justification = "Ignore")]
     public static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder)
         where TBuilder : IHostApplicationBuilder
     {
@@ -100,15 +100,10 @@ public static class Extensions
                     .AddRuntimeInstrumentation())
             .WithTracing(tracing => _ = tracing.AddSource(builder.Environment.ApplicationName)
                     .AddAspNetCoreInstrumentation(tracing =>
-
-                        // Exclude health check requests from tracing
                         tracing.Filter = context =>
                             !context.Request.Path.StartsWithSegments(HealthEndpointPath, StringComparison.OrdinalIgnoreCase)
                             && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath, StringComparison.OrdinalIgnoreCase)
                     )
-
-                    // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
-                    //.AddGrpcClientInstrumentation()
                     .AddHttpClientInstrumentation());
 
         _ = builder.AddOpenTelemetryExporters();

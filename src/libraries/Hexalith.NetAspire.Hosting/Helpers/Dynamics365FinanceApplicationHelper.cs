@@ -23,9 +23,6 @@ public static class Dynamics365FinanceApplicationHelper
     {
         ArgumentNullException.ThrowIfNull(project);
         return project
-
-            // .WithReference(project.ApplicationBuilder.AddQueueBinding("d365fnocustomersbinding"))
-            // .WithReference(project.ApplicationBuilder.AddQueueBinding("d365fnopartnerinventorybinding"))
             .WithEnvironmentFromConfiguration("Dynamics365Finance__Instance")
             .WithEnvironmentFromConfiguration("Dynamics365Finance__Identity__Tenant")
             .WithEnvironmentFromConfiguration("Dynamics365Finance__Identity__ApplicationId")
