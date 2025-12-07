@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.35906.104
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -51,11 +51,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{
 	ProjectSection(SolutionItems) = preProject
 		src\libraries\Directory.Build.props = src\libraries\Directory.Build.props
 		src\libraries\README.md = src\libraries\README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "servers", "servers", "{339097B8-FCFF-4AD2-8535-C6FA645ED419}"
-	ProjectSection(SolutionItems) = preProject
-		src\servers\README.md = src\servers\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hexalith.Build", "Hexalith.Build", "{DA4446BE-296C-40E4-B0FF-05F9AF0F2502}"
@@ -192,7 +187,6 @@ Global
 		{3E198984-7A1D-4A63-BB49-FCF1B9AA5EF2} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{52A95C3D-7705-406D-B0F6-C49017FC525F} = {3E198984-7A1D-4A63-BB49-FCF1B9AA5EF2}
 		{884D0EEB-6F10-4783-A58F-178A17DF1131} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
-		{339097B8-FCFF-4AD2-8535-C6FA645ED419} = {2E1479EA-06ED-4A69-8F50-F17804066FA6}
 		{DA4446BE-296C-40E4-B0FF-05F9AF0F2502} = {C67B5007-8999-4638-8317-C6DA2F62D65C}
 		{361A8C05-7F6F-4BA3-8321-59A94294831A} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
 		{A52F7525-CCC2-40B5-8250-FC69502D355C} = {DA4446BE-296C-40E4-B0FF-05F9AF0F2502}
