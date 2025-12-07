@@ -5,11 +5,14 @@
 
 namespace Hexalith.NetAspire.Hosting.Helpers;
 
+using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
+using Aspire.Hosting.Eventing;
 using Aspire.Hosting.Lifecycle;
 
 /// <summary>
@@ -18,31 +21,40 @@ using Aspire.Hosting.Lifecycle;
 public static class AspireHostHelper
 {
     /// <summary>
-    /// Adds a hook to set the ASPNETCORE_FORWARDEDHEADERS_ENABLED environment variable to true for all projects in the application.
+    /// Adds a subscriber that sets the ASPNETCORE_FORWARDEDHEADERS_ENABLED environment variable to true
+    /// for all projects in the application.
     /// </summary>
     /// <param name="builder">The distributed application builder.</param>
     /// <returns>The updated application builder.</returns>
     public static IDistributedApplicationBuilder AddForwardedHeaders([NotNull] this IDistributedApplicationBuilder builder)
     {
         ArgumentNullException.ThrowIfNull(builder);
-        builder.Services.TryAddLifecycleHook<AddForwardHeadersHook>();
+
+        // Replaces obsolete TryAddLifecycleHook<T>()
+        builder.Services.TryAddEventingSubscriber<AddForwardHeadersSubscriber>();
+
         return builder;
     }
 
-    private sealed class AddForwardHeadersHook : IDistributedApplicationLifecycleHook
+    private sealed class AddForwardHeadersSubscriber : IDistributedApplicationEventingSubscriber
     {
-        /// <summary>
-        /// Executes before the application starts.
-        /// </summary>
-        /// <param name="appModel">The distributed application model.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>A task representing the asynchronous operation.</returns>
-        public Task BeforeStartAsync(DistributedApplicationModel appModel, CancellationToken cancellationToken = default)
+        public Task SubscribeAsync(
+            IDistributedApplicationEventing eventing,
+            DistributedApplicationExecutionContext executionContext,
+            CancellationToken cancellationToken)
         {
-            foreach (ProjectResource p in appModel.GetProjectResources())
+            // Replaces obsolete IDistributedApplicationLifecycleHook.BeforeStartAsync(...)
+            _ = eventing.Subscribe<BeforeStartEvent>((@event, _) =>
             {
-                p.Annotations.Add(new EnvironmentCallbackAnnotation(context => context.EnvironmentVariables["ASPNETCORE_FORWARDEDHEADERS_ENABLED"] = "true"));
-            }
+                foreach (ProjectResource p in @event.Model.GetProjectResources())
+                {
+                    p.Annotations.Add(
+                        new EnvironmentCallbackAnnotation(ctx =>
+                            ctx.EnvironmentVariables["ASPNETCORE_FORWARDEDHEADERS_ENABLED"] = "true"));
+                }
+
+                return Task.CompletedTask;
+            });
 
             return Task.CompletedTask;
         }
