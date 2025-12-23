@@ -2,6 +2,6 @@
   <!-- Import the Directory.Package.props file in Hexalith.Builds. -->
   <Import Project="$(MSBuildThisFileDirectory)Hexalith.Builds/Props/Directory.Packages.props" />
   <ItemGroup>
-    <PackageVersion Include="Hexalith.Application" Version="1.71.2" />
+    <PackageVersion Include="Hexalith.Application" Version="1.72.0" />
   </ItemGroup>
 </Project>
